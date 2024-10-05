@@ -1,34 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luciama2 <luciama2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/05 17:46:26 by luciama2          #+#    #+#             */
-/*   Updated: 2024/10/05 18:09:40 by luciama2         ###   ########.fr       */
+/*   Created: 2024/10/04 22:12:49 by luciama2          #+#    #+#             */
+/*   Updated: 2024/10/05 19:39:22 by luciama2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef ZOMBIE_H
+#define ZOMBIE_H
 
-Zombie::Zombie(void){}
+# include <sstream>
+# include <iostream>
+# include <iomanip>
 
-Zombie::~Zombie(void)
+class Zombie
 {
-	std::cout << "destructor:" << this->_name << std::endl;
-}
+	private:
+		std::string _name;
+		
+	public:
+		Zombie(void);
+		~Zombie(void);
+		void set_name(std::string name);
+		std::string get_name(void);
+		//member functions
+		void announce(void);
+};
 
-void Zombie::set_name(std::string name)
-{
-	this->_name = name;
-}
-std::string Zombie::get_name(void)
-{
-	return this->_name;
-}
+Zombie* zombieHorde( int N, std::string name );
 
-void Zombie::announce(void)
-{
-	std::cout << Zombie::get_name() << ":BraiiiiiiinnnzzzZ..." << std::endl;
-}
+#endif

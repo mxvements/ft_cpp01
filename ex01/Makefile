@@ -4,8 +4,7 @@ FLAGS=	-Wall -Werror -Wextra -std=c++98
 
 FILES=		main.cpp \
 			Zombie.cpp \
-			newZombie.cpp \
-			randomChump.cpp
+			zombieHorde.cpp
 
 OBJ_PATH=	obj/
 OBJ=		$(FILES:%.cpp=$(OBJ_PATH)%.o)

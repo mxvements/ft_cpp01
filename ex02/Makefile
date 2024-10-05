@@ -1,12 +1,8 @@
-NAME=	zombie
+NAME=	brain
 CC=		clang++
-FLAGS=	-Wall -Werror -Wextra -std=c++98
+FLAGS=	-Wall -Werror -Wextra  -std=c++98
 
-FILES=		main.cpp \
-			Zombie.cpp \
-			newZombie.cpp \
-			randomChump.cpp
-
+FILES=		main.cpp
 OBJ_PATH=	obj/
 OBJ=		$(FILES:%.cpp=$(OBJ_PATH)%.o)
 
@@ -29,4 +25,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: re fclean all
+.PHONY: re fclean all	
