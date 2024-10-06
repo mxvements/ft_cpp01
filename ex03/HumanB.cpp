@@ -6,7 +6,7 @@
 /*   By: luciammielgo <luciammielgo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 21:32:20 by luciama2          #+#    #+#             */
-/*   Updated: 2024/10/06 23:26:03 by luciammielg      ###   ########.fr       */
+/*   Updated: 2024/10/06 23:29:36 by luciammielg      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,10 @@ void HumanB::setName(std::string name) { this->_name = name; }
 
 void HumanB::attack(void)
 {
+	if (this->_weapon == nullptr)
+	{
+		std::cout << this->_name << "has no weapon" << std::endl;
+		return ;
+	}
 	std::cout << this->_name << " attacks with their " << this->_weapon->getType() << std::endl;
 }
