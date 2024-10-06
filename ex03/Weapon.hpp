@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luciama2 <luciama2@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luciammielgo <luciammielgo@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 21:12:14 by luciama2          #+#    #+#             */
-/*   Updated: 2024/10/05 21:25:23 by luciama2         ###   ########.fr       */
+/*   Updated: 2024/10/06 22:04:44 by luciammielg      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,9 @@ class Weapon
 	public:
 		Weapon(void);
 		~Weapon(void);
-		void set_type(std::string type);
-		std::string get_type(void);
-		//member functs
+		Weapon(std::string type);
 		const std::string &getType(void);
-		void getType(const std::string &type);
+		void setType(const std::string &type);
 		
 } ;
 

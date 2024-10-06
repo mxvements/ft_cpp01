@@ -1,23 +1,23 @@
 NAME=	violence
 CC=		clang++
-FLAGS=	-Wall -Werror -Wextra -std=c++98
+FLAGS=	-Wall -Werror -Wextra 
 
 FILES=		main.cpp \
 			Weapon.cpp \
 			HumanA.cpp \
-			HummanB.cpp
+			HumanB.cpp
 OBJ_PATH=	obj/
-OBJS=		$(FILES:%.cpp=$(OBJ_PATH)%.o)
+OBJ=		$(FILES:%.cpp=$(OBJ_PATH)%.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJ_PATH)
+$(NAME): $(OBJ)
 	@mkdir -p $(OBJ_PATH)
 	$(CC) $(FLAGS) $^ -o $(NAME)
 
 $(OBJ_PATH)%.o: %.cpp
 	@mkdir -p $(OBJ_PATH)
-	$(CC) $(FLAGS) -c $< -o  $@
+	$(CC) $(FLAGS) -c $< -o $@
 
 clean:
 	rm -rf $(OBJ)
