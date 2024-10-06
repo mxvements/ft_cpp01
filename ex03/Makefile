@@ -1,6 +1,6 @@
 NAME=	violence
 CC=		clang++
-FLAGS=	-Wall -Werror -Wextra 
+FLAGS=	-Wall -Werror -Wextra -std=c++98
 
 FILES=		main.cpp \
 			Weapon.cpp \
@@ -28,4 +28,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: re fclean clea
+.PHONY: re fclean clean
