@@ -1,8 +1,10 @@
 NAME=	losers
 CC=		clang++
-FLAGS=	-Wall -Werror -Wextra -std=c++98
+FLAGS=	-Wall -Werror -Wextra -std=c++98 -g3
 
-FILES=		main.cpp
+FILES=		main.cpp \
+			stringReplacer.cpp \
+			errors.cpp
 OBJ_PATH=	obj/
 OBJ=		$(FILES:%.cpp=$(OBJ_PATH)%.o)
 
