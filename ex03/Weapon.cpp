@@ -3,22 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   Weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luciammielgo <luciammielgo@student.42.f    +#+  +:+       +#+        */
+/*   By: luciama2 <luciama2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 21:12:16 by luciama2          #+#    #+#             */
-/*   Updated: 2024/10/06 23:14:25 by luciammielg      ###   ########.fr       */
+/*   Updated: 2024/10/08 20:54:09 by luciama2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Weapon.hpp"
 
-Weapon::Weapon(void){}
+Weapon::Weapon(std::string type) {this->_type = type; }
 Weapon::~Weapon(void){}
-
-Weapon::Weapon(std::string type)
-{
-	this->_type = type;
-}
 
 const std::string &Weapon::getType(void)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luciammielgo <luciammielgo@student.42.f    +#+  +:+       +#+        */
+/*   By: luciama2 <luciama2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 21:32:20 by luciama2          #+#    #+#             */
-/*   Updated: 2024/10/06 23:29:36 by luciammielg      ###   ########.fr       */
+/*   Updated: 2024/10/08 20:54:54 by luciama2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 HumanB::~HumanB(void) {}
 
-HumanB::HumanB(std::string name) : _weapon(nullptr),
+HumanB::HumanB(std::string name) : _weapon(NULL),
 								   _name(name) {}
 
 Weapon *HumanB::getWeapon(void) { return this->_weapon; }
@@ -29,7 +29,7 @@ void HumanB::setName(std::string name) { this->_name = name; }
 
 void HumanB::attack(void)
 {
-	if (this->_weapon == nullptr)
+	if (this->_weapon == NULL)
 	{
 		std::cout << this->_name << "has no weapon" << std::endl;
 		return ;

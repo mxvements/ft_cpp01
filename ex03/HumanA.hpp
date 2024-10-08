@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   HumanA.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luciammielgo <luciammielgo@student.42.f    +#+  +:+       +#+        */
+/*   By: luciama2 <luciama2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 21:26:37 by luciama2          #+#    #+#             */
-/*   Updated: 2024/10/06 23:16:32 by luciammielg      ###   ########.fr       */
+/*   Updated: 2024/10/08 20:55:14 by luciama2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ class HumanA
 		HumanA(std::string name, Weapon &weapon);
 		Weapon &getWeapon(void);
 		std::string getName(void);
-		void setWeapon(Weapon &weapon);
+		void setWeapon(Weapon &weapon) const;
 		void setName(std::string name);
 		//functs
 		void attack(void);
