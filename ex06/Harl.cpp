@@ -6,7 +6,7 @@
 /*   By: luciama2 <luciama2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 18:16:45 by luciama2          #+#    #+#             */
-/*   Updated: 2024/10/08 20:22:39 by luciama2         ###   ########.fr       */
+/*   Updated: 2024/11/06 21:05:18 by luciama2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ void Harl::harlFilter(std::string level)
 			this->complain("INFO");
 		case 2:
 			this->complain("WARNING");
-	
 		case 3:
 			this->complain("ERROR");
 			break;
