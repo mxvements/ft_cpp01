@@ -6,7 +6,7 @@
 /*   By: luciama2 <luciama2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 18:27:11 by luciama2          #+#    #+#             */
-/*   Updated: 2024/11/06 21:00:48 by luciama2         ###   ########.fr       */
+/*   Updated: 2024/11/07 20:47:45 by luciama2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ std::string StringReplacer::replace_str(void)
 {
 	std::string line;
 	std::ifstream file;
-	std::ofstream replaced_file("output.txt");
+	std::string replaced_line_name = this->get_if_filename() + ".replace";
+	std::ofstream replaced_file(replaced_line_name.c_str());
 
 	file.open(this->_if_filename.c_str());
 	if (!file.is_open())
@@ -55,10 +56,22 @@ std::string StringReplacer::replace_str(void)
 		std::size_t flag = line.find(this->get_to_find());
 		if (flag != std::string::npos)
 		{
-			std::string sbstr1 = line.substr(0, flag);
-			std::string sbstr2 = line.substr(flag + this->get_to_find().length(), line.length());
-			std::string final = sbstr1 + this->get_to_replace() + sbstr2;
-			this->set_result(this->get_result() + final + "\n");
+			while (flag != std::string::npos)
+			{
+				std::string sbstr1 = line.substr(0, flag);
+				// std::cout << "1: " << sbstr1 << std::endl;
+				std::string sbstr2 = line.substr(flag + this->get_to_find().length(), line.length());
+				// std::cout << "2: " << sbstr2 << std::endl;
+				std::string final = sbstr1 + this->get_to_replace() + sbstr2;
+				std::cout << "final (line):\t" << final << std::endl;
+				// std::cout << "result(line) saved:\t" << this->get_result() << std::endl;
+				line = this->get_result() + final + "\n";
+				flag = line.find(this->get_to_find());
+				// break;
+			}
+			std::getline(file, line);
+			flag = line.find(this->get_to_find());
+			std::cout << "next line: " << line << std::endl;	
 		}
 		else
 		{
