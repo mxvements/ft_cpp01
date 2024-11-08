@@ -6,7 +6,7 @@
 /*   By: luciama2 <luciama2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 18:26:36 by luciama2          #+#    #+#             */
-/*   Updated: 2024/11/06 20:55:00 by luciama2         ###   ########.fr       */
+/*   Updated: 2024/11/08 19:39:23 by luciama2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ class StringReplacer
 		std::string get_to_replace(void);
 		std::string get_result(void);
 		
+		void add_result(std::string line);
 		std::string replace_str(void);
 		
 } ;

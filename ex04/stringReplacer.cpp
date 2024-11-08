@@ -6,7 +6,7 @@
 /*   By: luciama2 <luciama2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 18:27:11 by luciama2          #+#    #+#             */
-/*   Updated: 2024/11/07 20:47:45 by luciama2         ###   ########.fr       */
+/*   Updated: 2024/11/08 19:53:41 by luciama2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,13 @@ std::string StringReplacer::get_to_find(void) { return this->_to_find; }
 std::string StringReplacer::get_to_replace(void) { return this->_to_replace; }
 std::string StringReplacer::get_result(void) { return this->_result; }
 
+void StringReplacer::add_result(std::string line)
+{
+	std::cout << "<line in add result> "  << line << std::endl;
+	std::string o_result = this->get_result();
+	std::cout << "<o_result: >"  << o_result << std::endl;
+	this->set_result(o_result + line);
+}
 /**
  * TODO:
  * - copy the content to a new file <filename>.replace
@@ -44,38 +51,42 @@ std::string StringReplacer::replace_str(void)
 	std::ofstream replaced_file(replaced_line_name.c_str());
 
 	file.open(this->_if_filename.c_str());
-	if (!file.is_open())
-	{
-		std::cerr << "Unable to read file " << this->_if_filename << std::endl;
-		return "";
-	}
+	// if (!file.is_open())
+	// {
+	// 	std::cerr << "Unable to read file " << this->_if_filename << std::endl;
+	// 	return "";
+	// }
 	this->_result.clear();
 
 	while (std::getline(file, line))
 	{
 		std::size_t flag = line.find(this->get_to_find());
-		if (flag != std::string::npos)
+		std::string original_line = line;
+		// std::cout << "line: " << line << std::endl;
+		if (flag == std::string::npos)
 		{
-			while (flag != std::string::npos)
-			{
-				std::string sbstr1 = line.substr(0, flag);
-				// std::cout << "1: " << sbstr1 << std::endl;
-				std::string sbstr2 = line.substr(flag + this->get_to_find().length(), line.length());
-				// std::cout << "2: " << sbstr2 << std::endl;
-				std::string final = sbstr1 + this->get_to_replace() + sbstr2;
-				std::cout << "final (line):\t" << final << std::endl;
-				// std::cout << "result(line) saved:\t" << this->get_result() << std::endl;
-				line = this->get_result() + final + "\n";
-				flag = line.find(this->get_to_find());
-				// break;
-			}
-			std::getline(file, line);
-			flag = line.find(this->get_to_find());
-			std::cout << "next line: " << line << std::endl;	
+			this->add_result(line + "\n");
 		}
-		else
+		while (flag < original_line.length())
 		{
-			this->set_result(this->get_result() + line + "\n");
+			std::string sbstr1 = line.substr(0, flag);
+			// std::cout << "1: " << sbstr1 << std::endl;
+			std::string sbstr2 = line.substr(flag + this->get_to_find().length(), line.length());
+			// std::cout << "2: " << sbstr2 << std::endl;
+			std::string final = sbstr1 + this->get_to_replace() + sbstr2;
+			// std::cout << "final (line):\t" << final << std::endl;
+			// std::cout << "result(line) saved:\t" << this->get_result() << std::endl;
+			this->add_result(final + "\n");
+			line = this->get_result();
+			if (line == original_line)
+				break;
+			flag = line.find(this->get_to_find());
+			original_line = line;
+
+			// std::getline(file, line);
+			std::cout << "flag: " << flag << std::endl;
+			// std::cout << "set line: " << line << std::endl;
+			// break;
 		}
 	}
 	file.close();
