@@ -6,7 +6,7 @@
 /*   By: luciama2 <luciama2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 18:27:11 by luciama2          #+#    #+#             */
-/*   Updated: 2024/11/08 19:53:41 by luciama2         ###   ########.fr       */
+/*   Updated: 2024/11/09 15:23:08 by luciama2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,7 @@ std::string StringReplacer::get_result(void) { return this->_result; }
 
 void StringReplacer::add_result(std::string line)
 {
-	std::cout << "<line in add result> "  << line << std::endl;
 	std::string o_result = this->get_result();
-	std::cout << "<o_result: >"  << o_result << std::endl;
 	this->set_result(o_result + line);
 }
 /**
@@ -51,42 +49,27 @@ std::string StringReplacer::replace_str(void)
 	std::ofstream replaced_file(replaced_line_name.c_str());
 
 	file.open(this->_if_filename.c_str());
-	// if (!file.is_open())
-	// {
-	// 	std::cerr << "Unable to read file " << this->_if_filename << std::endl;
-	// 	return "";
-	// }
+	if (!file.is_open())
+	{
+		std::cerr << "Unable to read file " << this->_if_filename << std::endl;
+		return "";
+	}
 	this->_result.clear();
 
 	while (std::getline(file, line))
 	{
 		std::size_t flag = line.find(this->get_to_find());
-		std::string original_line = line;
-		// std::cout << "line: " << line << std::endl;
+		while (flag != std::string::npos)
+		{
+			std::string sbstr1 = line.substr(0, flag);
+			std::string sbstr2 = line.substr(flag + this->get_to_find().length(), line.length());
+			std::string final = sbstr1 + this->get_to_replace() + sbstr2;
+			line = final;
+			flag = line.find(this->get_to_find());
+		}
 		if (flag == std::string::npos)
 		{
 			this->add_result(line + "\n");
-		}
-		while (flag < original_line.length())
-		{
-			std::string sbstr1 = line.substr(0, flag);
-			// std::cout << "1: " << sbstr1 << std::endl;
-			std::string sbstr2 = line.substr(flag + this->get_to_find().length(), line.length());
-			// std::cout << "2: " << sbstr2 << std::endl;
-			std::string final = sbstr1 + this->get_to_replace() + sbstr2;
-			// std::cout << "final (line):\t" << final << std::endl;
-			// std::cout << "result(line) saved:\t" << this->get_result() << std::endl;
-			this->add_result(final + "\n");
-			line = this->get_result();
-			if (line == original_line)
-				break;
-			flag = line.find(this->get_to_find());
-			original_line = line;
-
-			// std::getline(file, line);
-			std::cout << "flag: " << flag << std::endl;
-			// std::cout << "set line: " << line << std::endl;
-			// break;
 		}
 	}
 	file.close();
@@ -97,6 +80,5 @@ std::string StringReplacer::replace_str(void)
 	}
 	replaced_file << this->get_result();
 	replaced_file.close();
-	// std::cout << this->get_result();
 	return this->_result;
 }
