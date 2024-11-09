@@ -6,7 +6,7 @@
 /*   By: luciama2 <luciama2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 18:16:45 by luciama2          #+#    #+#             */
-/*   Updated: 2024/11/06 21:05:18 by luciama2         ###   ########.fr       */
+/*   Updated: 2024/11/09 17:29:06 by luciama2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void Harl::complain(std::string level)
 		&Harl::info,
 		&Harl::warning,
 		&Harl::error};
-	if (idx > 0)
+	if (idx >= 0)
 		return ((this->*levelsPtr[idx])());
 	std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
 	return;
